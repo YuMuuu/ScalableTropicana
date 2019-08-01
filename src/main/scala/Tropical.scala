@@ -25,10 +25,10 @@ object Semiring {
   implicit def TropicalSemiring: Semiring[Tropical] = new Semiring[Tropical] {
     override val oplus = A => B => min(A, B)
     override val zero = Infty
-    override val otimes: Tropical => Tropical => Tropical = {
-      case _ => Infty => Infty
-      case Infty => _ => Infty
-      case ta:T => tb:T => T(ta.d + tb.d)
+    override val otimes: Tropical => Tropical => Tropical = t1 => t2 => (t1, t2) match {
+      case (_, Infty) => Infty
+      case (Infty, _) => Infty
+      case (aT:T, bT:T) => T(aT.d + bT.d)
     }
     override val one: Tropical = T(0d)
   }
