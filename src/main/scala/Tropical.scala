@@ -22,7 +22,7 @@ object Semiring {
     case (T(xd), T(yd)) => xd <= yd
   }
 
-  implicit def TropicalSemiring: Semiring[Tropical] = new Semiring[Tropical] {
+  implicit def TropicalSemiringImpl: Semiring[Tropical] = new Semiring[Tropical] {
     override val oplus = A => B => min(A, B)
     override val zero = Infty
     override val otimes: Tropical => Tropical => Tropical = t1 => t2 => (t1, t2) match {
