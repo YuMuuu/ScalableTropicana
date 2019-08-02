@@ -33,3 +33,19 @@ object Semiring {
     override val one: Tropical = T(0d)
   }
 }
+
+trait LinearAlgebra[A] {
+  type Vector[A] = List[A]
+
+  val dim: Vector[A] => Int = _.length
+
+  type Matrix[A] = List[Vector[A]]
+
+  val ident: Semiring[A] => Int => Matrix[A] = n => ???
+
+//    ident n = reverse
+//      . take n . map (take n)
+//    . tails . cycle
+//  $ replicate (n-1) zero ++ [one]
+
+}
