@@ -1,0 +1,5 @@
+package tropical
+
+class PowerToropical {
+
+}

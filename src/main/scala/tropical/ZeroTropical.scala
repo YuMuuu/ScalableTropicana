@@ -2,6 +2,9 @@ package tropical
 
 import breeze.storage.Zero
 
-class ZeroTropical extends Zero[Tropical] {
-  def zero: Tropical = Infty
+trait ZeroTropical extends Zero[Tropical]
+object ZeroTropical {
+  implicit object zeroTropical extends ZeroTropical {
+    def zero: Tropical = Infty
+  }
 }

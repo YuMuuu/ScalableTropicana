@@ -13,6 +13,7 @@ lazy val root = (project in file("."))
       "org.scalanlp" %% "breeze-natives" % "0.13.2",
       "org.scalanlp" %% "breeze-viz" % "0.13.2",
       "org.typelevel" %% "cats-core" % "2.0.0-M4",
+      "org.scalatest" %% "scalatest" % "3.0.5" % "test",
 
     )
   )
