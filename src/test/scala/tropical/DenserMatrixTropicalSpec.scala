@@ -2,11 +2,12 @@ package tropical
 
 import breeze.linalg.DenseMatrix
 import org.scalatest.{DiagrammedAssertions, FlatSpec}
+import SemiringTropical.semiringTropical
+import ZeroTropical.zeroTropical
 
 class DenserMatrixTropicalSpec extends FlatSpec with DiagrammedAssertions {
-  implicit val semiringTropical = SemiringTropical.semiringTropical
-  implicit val tropicalLiteralRow = new LiteralRowTropical
-  implicit val zero = new ZeroTropical
+//  implicit val semiringTropical = SemiringTropical.semiringTropical
+//  implicit val tropicalLiteralRow = new LiteralRowTropical
 
   "DenserMatrix" should "Tropical行列を加算出来るか" in {
     val a =
@@ -62,12 +63,12 @@ class DenserMatrixTropicalSpec extends FlatSpec with DiagrammedAssertions {
       )
 
     val res = DenseMatrix(
-      (Infty, T(2.0), T(3.0), T(9.0)),
-      (T(12.0), T(0.0), T(1.0), T(6.0)),
-      (T(8.0), Infty, Infty, Infty),
-      (Infty, T(5.0), T(7.0), Infty)
+      (Infty, T(6.0), T(12.0), Infty),
+      (Infty, T(0.0), T(3.0), T(27.0)),
+      (Infty, Infty, Infty, T(15.0)),
+      (T(9.0), Infty, Infty, Infty)
     )
-//    println(a ^:^ 3)
-//    assert((a :^ 3) === res)
+
+    assert(pow(a, 3) === res)
   }
 }
