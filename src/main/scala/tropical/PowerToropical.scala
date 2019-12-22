@@ -1,18 +1,14 @@
 package tropical
 
 import breeze.generic.{MappingUFunc, UFunc}
-import tropical.SemiringTropical.semiringTropical
+import breeze.linalg.DenseVector
 
 object pow extends UFunc with MappingUFunc {
+  val dim: DenseVector[Tropical] => Int = _.length
 
-  private implicit class multipul(n: Tropical) {
-    def *(m: Tropical): Tropical = semiringTropical.*(n, m)
-  }
+  implicit val zeroToropical = ZeroTropical.zeroTropical
 
   implicit object powTropical extends Impl2[Tropical, Int, Tropical] {
-    override def apply(v: Tropical, v2: Int): Tropical =
-      List.fill(v2)(v).foldLeft(T(0d): Tropical) { (acc, z) =>
-        acc * z
-      }
+    override def apply(v: Tropical, v2: Int): Tropical = ???
   }
 }

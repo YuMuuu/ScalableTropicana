@@ -1,9 +1,16 @@
 package tropical
 
 import breeze.generic.{MappingUFunc, UFunc}
+import breeze.linalg.DenseMatrix
+import tropical.SemiringTropical._
+import tropical.ZeroTropical._
 
-object DotTropical extends UFunc with MappingUFunc {
+object IdentityTropical extends UFunc with MappingUFunc {
 
-  implicit object dotTropical extends Impl2[Tropical]
+  implicit object identTropical extends Impl[Int, DenseMatrix[Tropical]] {
+    override def apply(v2: Int): DenseMatrix[Tropical] = {
+      DenseMatrix.eye[Tropical](v2)
+    }
+  }
 
 }
