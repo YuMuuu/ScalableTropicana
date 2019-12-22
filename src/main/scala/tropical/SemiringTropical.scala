@@ -1,18 +1,12 @@
 package tropical
 
-import breeze.math.{Ring, Semiring}
+import breeze.math.Semiring
 import cats.kernel.Eq
 import cats.kernel.Order.min
 import cats.syntax.eq.catsSyntaxEq
 import cats.{Order, Show}
 
 object SemiringTropical {
-  //  implicit val semiringCmplx: Semiring[Complex] = ringComplex
-//  implicit val semiringCmplx: Semiring[Tropical] = ringTropical
-
-//  implicit def semiringFromRing[T](implicit ring: Ring[T]): Semiring[T] = ring
-
-
   implicit object semiringTropical extends Semiring[Tropical] {
     implicit val eqTropical: Eq[Tropical] = Eq.fromUniversalEquals
     implicit val showTropical: Show[Tropical] = Show.fromToString

@@ -8,9 +8,8 @@ import tropical.ZeroTropical._
 object IdentityTropical extends UFunc with MappingUFunc {
 
   implicit object identTropical extends Impl[Int, DenseMatrix[Tropical]] {
-    override def apply(v2: Int): DenseMatrix[Tropical] = {
-      DenseMatrix.eye[Tropical](v2)
+    override def apply(v: Int): DenseMatrix[Tropical] = {
+      DenseMatrix.eye[Tropical](v)
     }
   }
-
 }
