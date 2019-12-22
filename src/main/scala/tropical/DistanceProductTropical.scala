@@ -1,0 +1,5 @@
+package tropical
+
+object DistanceProductTropical {
+
+}
